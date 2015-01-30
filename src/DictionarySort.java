@@ -61,18 +61,18 @@ public class DictionarySort {
     while(min <= max)
     {
       numberOfRuns++;
-      int mid = (max+min)/2;
+      int middle = (max + min)/2;
       
-      if(words.get(mid).compareTo(wordToFind)==0)
+      if(words.get(middle).compareTo(wordToFind)==0)
       {
-        SearchResult binary = new SearchResult(mid, numberOfRuns);
+        SearchResult binary = new SearchResult(middle, numberOfRuns);
         return binary;
       }
-      else if(words.get(mid).compareTo(wordToFind)>0)
+      else if(words.get(middle).compareTo(wordToFind)>0)
       {
         max = mid - 1;
       }
-      else if(words.get(mid).compareTo(wordToFind)<0)
+      else if(words.get(middle).compareTo(wordToFind)<0)
       {
         min = mid + 1;
       }
