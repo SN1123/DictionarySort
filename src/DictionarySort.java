@@ -36,7 +36,6 @@ public class DictionarySort {
    * @param wordToFind - String to find in words
    * @return a SearchResult (index of item found or -1 if not found, number of iterations in search loop)
    */
-  
   public static SearchResult sequentialSearch(String wordToFind) {
     int count = 0;
     for(int i=0; i<words.size(); i++, count++){
@@ -62,7 +61,6 @@ public class DictionarySort {
     {
       numberOfRuns++;
       int middle = (max + min)/2;
-      
       if(words.get(middle).compareTo(wordToFind)==0)
       {
         SearchResult binary = new SearchResult(middle, numberOfRuns);
@@ -70,17 +68,16 @@ public class DictionarySort {
       }
       else if(words.get(middle).compareTo(wordToFind)>0)
       {
-        max = mid - 1;
+        max = middle - 1;
       }
       else if(words.get(middle).compareTo(wordToFind)<0)
       {
-        min = mid + 1;
+        min = middle + 1;
       }
     }
     SearchResult binary = new SearchResult(index, numberOfRuns);
     return binary;
   }
-  
   /**
    * implement a method to sort the ArrayList words
    *
@@ -88,7 +85,23 @@ public class DictionarySort {
    *
    */
   public static void sortList(ArrayList<String> list) {
-    
+    //TODO
+    for (int i = 0; i < list.size() - 1; i++) {
+      int smallest = 0;
+      for (int j = i + 1; j < list.size() - 1; j++) {
+        if (list.get(j).compareTo(list.get(smallest)) < 0) {
+          smallest = j;
+        }
+      }
+      swap (list, i, smallest);
+    }
+  }
+  
+  public static void swap(ArrayList<String> list, int i, int j) 
+  { 
+    String temp = list.get(i);
+    list.set(i, list.get(j));
+    list.set(j, temp);
   }
   /**
    * create an ArrayList<String> and populate it from text file
